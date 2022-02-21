@@ -10,10 +10,8 @@ $prenom = "Damien";
 $email = "dada@gmail.com";
 $password = "azerty";
 $adresse = "rue";
-$codePostal = 59186;
+$codePostal = "59186";
 $pays = "France";
-//J'aurais pu faire avec datetime
-$date = "Lundi";
 
 $title = "hache";
 $prix = 56;
@@ -28,8 +26,8 @@ try {
     $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
     $stm = $db->prepare("
-    INSERT INTO utilisateur (nom, prenom, email, pass, adresse, code_postal, pays, date_join)
-    VALUES (?,?,?,?,?,?,?,?)
+    INSERT INTO utilisateur (nom, prenom, email, pass, adresse, code_postal, pays)
+    VALUES (?,?,?,?,?,?,?)
 ");
 
     $stm->bindParam(1, $nom);
@@ -39,7 +37,6 @@ try {
     $stm->bindParam(5, $adresse);
     $stm->bindParam(6, $codePostal);
     $stm->bindParam(7, $pays);
-    $stm->bindParam(8, $date);
 
     $stm->execute();
 
